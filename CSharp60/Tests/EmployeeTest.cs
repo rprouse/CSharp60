@@ -24,5 +24,14 @@ namespace CSharp60.Tests
         {
             Assert.That(() => new Employee("", "Development", 12000), Throws.ArgumentException);
         }
+
+        [Test]
+        public void TestExplicitConstructor()
+        {
+            var employee = new Employee("Rob Prouse");
+            Assert.That(employee.Name, Is.EqualTo("Rob Prouse"));
+            Assert.That(employee.Department, Is.EqualTo("Intern"));
+            Assert.That(employee.Salary, Is.EqualTo(10000));
+        }
     }
 }
