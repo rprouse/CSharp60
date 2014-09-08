@@ -12,5 +12,17 @@ namespace CSharp60.Tests
             Assert.That(employee.Department, Is.EqualTo("Development"));
             Assert.That(employee.Salary, Is.EqualTo(12000));
         }
+
+        [Test]
+        public void EmployeeNameCannotBeNull()
+        {
+            Assert.That(() => new Employee(null, "Development", 12000), Throws.ArgumentException);
+        }
+
+        [Test]
+        public void EmployeeNameCannotBeEmpty()
+        {
+            Assert.That(() => new Employee("", "Development", 12000), Throws.ArgumentException);
+        }
     }
 }
