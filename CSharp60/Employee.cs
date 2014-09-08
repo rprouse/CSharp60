@@ -2,10 +2,12 @@
 
 namespace CSharp60
 {
-    /// <summary>
-    /// An example of using primary constructors.
-    /// </summary>
-    public class Employee(string name, string department, decimal salary)
+    public class Person(string name)
+    {
+        public string Name { get; } = name;
+    }
+
+    public class Employee(string name, string department, decimal salary) : Person(name)
     {
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("name cannot be null or empty");
@@ -15,7 +17,6 @@ namespace CSharp60
         {
         }
 
-        public string Name { get; } = name;
         public string Department { get; } = department;
         public decimal Salary { get; } = salary;
     }
