@@ -163,3 +163,17 @@ public class Product(string name, decimal price)
     public decimal Price { get; } = price;
 }
 ```
+
+## Null-Conditional Operators ##
+
+This is one of my favourite new features. Have you ever written code like this?
+
+```C#
+if (line != null && line.Product != null)
+{
+    total += line.Product.Price * line.Quantity;
+}
+```
+
+C# 6.0 introduces the ?. null-conditional operator that short circuits and returns null if anything in the chain is null. This combines really well with the [null-coalescing](http://www.alteridem.net/2007/08/17/null-coalescing-operator/) operator allowing you to rewrite teh above as follows.
+
