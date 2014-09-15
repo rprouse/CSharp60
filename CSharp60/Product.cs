@@ -2,13 +2,7 @@
 {
     public class Product
     {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-
-        public Product()
-        {
-            Name = "Toy Car";
-            Price = 9.99m;
-        }
+        public string Name { get; set; } = "Toy Car";
+        public decimal Price { get; set; } = 9.99m;
     }
 }
