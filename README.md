@@ -155,3 +155,11 @@ public decimal Price { get; private set; }
 ```
 
 Now you can omit the setter and it makes the underlying field read-only, so you can only set it in the constructor, or in an auto-property initializer. This is a great feature for creating and enforing imutable classes and also chains well with [Primary Constructors](http://www.alteridem.net/2014/09/08/c-6-0-primary-constructors/).
+
+```C#
+public class Product(string name, decimal price)
+{
+    public string Name { get; } = name;
+    public decimal Price { get; } = price;
+}
+```
