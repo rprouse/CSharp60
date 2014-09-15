@@ -1,6 +1,6 @@
 # New Features in C# 6.0 #
 
-This is a [series of blog posts](http://www.alteridem.net) on the new features that are coming in C# 6.0. 
+This is a [series of blog posts](http://www.alteridem.net/category/net/csharp/csharp-60/) on the new features that are coming in C# 6.0. 
 
 If you want to try out any of these features now, check out the <a href="https://roslyn.codeplex.com/">Rosyln compiler</a> and then install the latest CTP of <a href="http://www.visualstudio.com/en-us/downloads/visual-studio-14-ctp-vs.aspx">Visual Studio 14</a> or fire up a <a href="http://blogs.msdn.com/b/visualstudioalm/archive/2014/06/04/visual-studio-14-ctp-now-available-in-the-virtual-machine-azure-gallery.aspx">VM in Azure with Visual Studio 14</a> already installed.
 
