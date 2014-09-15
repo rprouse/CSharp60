@@ -177,3 +177,27 @@ if (line != null && line.Product != null)
 
 C# 6.0 introduces the ?. null-conditional operator that short circuits and returns null if anything in the chain is null. This combines really well with the [null-coalescing](http://www.alteridem.net/2007/08/17/null-coalescing-operator/) operator allowing you to rewrite teh above as follows.
 
+```C#
+total += line?.Product?.Price ?? 0 * line?.Quantity ?? 0;
+```
+
+This also works with indexers,
+
+```C#
+var firstProduct = OrderLines?[0].Product;	// Will return null if OrderLines is null
+```
+
+It also works with methods. This will be really handy for triggering events. Instead of writing,
+
+```C#
+if (OrderChanged != null)
+{
+    OrderChanged(this, EventArgs.Empty);
+}
+```
+
+You will now be able to write.
+
+```C#
+OrderChanged?.Invoke(this, EventArgs.Empty);
+```

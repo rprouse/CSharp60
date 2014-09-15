@@ -1,10 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace CSharp60
 {
     public class Order
     {
-        public IList<OrderLine> OrderLines { get; } = new List<OrderLine>();
+        public event EventHandler OrderChanged;
+
+        public ObservableCollection<OrderLine> OrderLines { get; } = new ObservableCollection<OrderLine>();
+
+        public Order()
+        {
+            OrderLines.CollectionChanged += OrderLines_CollectionChanged;
+        }
+
+        private void OrderLines_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OrderChanged?.Invoke(this, EventArgs.Empty);
+        }
 
         public decimal OrderTotal
         {
@@ -13,10 +27,7 @@ namespace CSharp60
                 decimal total = 0;
                 foreach(var line in OrderLines)
                 {
-                    if (line != null && line.Product != null)
-                    {
-                        total += line.Product.Price * line.Quantity;
-                    }
+                    total += line?.Product?.Price ?? 0 * line?.Quantity ?? 0;
                 }
                 return total;
             }
