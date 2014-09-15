@@ -113,3 +113,45 @@ public class Employee(string name, string department, decimal salary) : Person(n
     public decimal Salary { get; } = salary;
 }
 ```
+
+## Auto-Property Changes ##
+
+There have been a few small improvements to Auto-Properties.
+
+### Auto-Property Initializers ###
+
+I hinted at this feature in my last post on [Primary Constructors](http://www.alteridem.net/2014/09/08/c-6-0-primary-constructors/). Auto-Properties were introduced way back in C# 3.0, but unlike other members, you had to initialize their values in the constructor.
+
+```C#
+public class Product
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+
+    public Product()
+    {
+        Name = "Toy Car";
+        Price = 9.99m;
+    }
+}
+```
+
+In C# 6.0, you can now initialize the properties where they are declared.
+
+```C#
+public class Product
+{
+    public string Name { get; set; } = "Toy Car";
+    public decimal Price { get; set; } = 9.99m;
+}
+```
+
+### Getter Only Auto-Properties ###
+
+You could always declare the setter of an auto-property private or protected to prevent it from being used outside of the class.
+
+```C#
+public decimal Price { get; private set; }
+```
+
+Now you can omit the setter and it makes the underlying field read-only, so you can only set it in the constructor, or in an auto-property initializer. This is a great feature for creating and enforing imutable classes and also chains well with [Primary Constructors](http://www.alteridem.net/2014/09/08/c-6-0-primary-constructors/).
