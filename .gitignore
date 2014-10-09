@@ -156,3 +156,7 @@ $RECYCLE.BIN/
 .DS_Store
 
 CSharp60.sln.ide/
+
+#Nuget Packages
+packages/
+!packages/repositories.config

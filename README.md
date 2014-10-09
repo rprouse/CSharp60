@@ -175,7 +175,7 @@ if (line != null && line.Product != null)
 }
 ```
 
-C# 6.0 introduces the ?. null-conditional operator that short circuits and returns null if anything in the chain is null. This combines really well with the [null-coalescing](http://www.alteridem.net/2007/08/17/null-coalescing-operator/) operator allowing you to rewrite teh above as follows.
+C# 6.0 introduces the ?. null-conditional operator that short circuits and returns null if anything in the chain is null. This combines really well with the [null-coalescing](http://www.alteridem.net/2007/08/17/null-coalescing-operator/) operator allowing you to rewrite the above as follows.
 
 ```C#
 total += line?.Product?.Price ?? 0 * line?.Quantity ?? 0;
