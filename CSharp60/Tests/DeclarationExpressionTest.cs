@@ -16,15 +16,19 @@ namespace CSharp60.Tests
         [TestCase("42", 42)]
         public void TestTryParse(string value, int expected)
         {
-            int i;
-            if (Int32.TryParse(value, out i))
+            int x = Int32.TryParse(value, out var i) ? i : -1;
+            Assert.That(x, Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase("string")]
+        public void TestCasting(object obj)
+        {
+            if ((string str = obj as string) != null )
             {
-                Assert.That(i, Is.EqualTo(expected));
+                Assert.Pass();
             }
-            else
-            {
-                Assert.Fail("Failed to parse {0}", value);
-            }
+            Assert.Fail();
         }
     }
 }

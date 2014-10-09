@@ -201,3 +201,45 @@ You will now be able to write.
 ```C#
 OrderChanged?.Invoke(this, EventArgs.Empty);
 ```
+
+## Declaration Expressions ###
+
+This is a complex name for a simple concept. Until now, if you ever wanted to use an out parameter in a method, you had to declare it before using it.
+
+We've all written code like this,
+
+```C#
+int i;
+if (Int32.TryParse(value, out i))
+{
+    // Use i here
+}
+```
+
+Now you can write the much simpler,
+
+```C#
+if (Int32.TryParse(value, out var i))
+{
+    Assert.That(i, Is.EqualTo(expected));
+}
+```
+
+There are a couple of things to note here. First is that `i` is only in scope within the `if` statement. You cannot use it outside the `if` statement. Second, notice that I used `var` and that the type was correctly infered as int.
+
+It is also useful for casting. You no longer have to cast an object as something, then check if it is null. You can now do it all within the if statement.
+
+```C#
+if ((string str = obj as string) != null )
+{
+    Console.WriteLine(str);
+}
+```
+
+It can also be useful for quickly supplying default args for a `TryParse`.
+
+```C#
+int x = Int32.TryParse(value, out var i) ? i : -1;
+```
+
+Sweet and simple...
