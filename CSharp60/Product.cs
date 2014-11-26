@@ -1,8 +1,14 @@
 ﻿namespace CSharp60
 {
-    public class Product(string name, decimal price)
+public class Product
+{
+    public Product(string name, decimal price)
     {
-        public string Name { get; } = name;
-        public decimal Price { get; } = price;
+        Name = name;
+        Price = price;
     }
+
+    public string Name { get; }
+    public decimal Price { get; }
+}
 }

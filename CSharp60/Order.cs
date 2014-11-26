@@ -34,9 +34,15 @@ namespace CSharp60
         }
     }
 
-    public class OrderLine(Product product, uint quantity)
+    public class OrderLine
     {
-        public uint Quantity { get; } = quantity;
-        public Product Product { get; } = product;
+        public OrderLine(Product product, uint quantity)
+        {
+            Quantity = quantity;
+            Product = product;
+        }
+
+        public uint Quantity { get; }
+        public Product Product { get; }
     }
 }

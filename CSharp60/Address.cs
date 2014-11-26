@@ -1,10 +1,18 @@
 ﻿namespace CSharp60
 {
-    public class Address(string street, string city, string province, string postal_code)
+    public class Address
     {
-        public string Street { get; } = street;
-        public string City { get; } = city;
-        public string Province { get; } = province;
-        public string PostalCode { get; } = postal_code;
+        public Address(string street, string city, string province, string postal_code)
+        {
+            Street = street;
+            City = city;
+            Province = province;
+            PostalCode = postal_code;
+        }
+
+        public string Street { get; }
+        public string City { get; }
+        public string Province { get; }
+        public string PostalCode { get; }
     }
 }
