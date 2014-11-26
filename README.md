@@ -269,3 +269,38 @@ int x = Int32.TryParse(value, out var i) ? i : -1;
 ```
 
 Sweet and simple...
+
+## String Interpolation ##
+
+String interpolation in C# is fairly easy if you only have a couple of 
+arguments, but it can be error prone with many arguments or if you need 
+to re-order the arguments. It is also difficult to quickly see which
+variable gets substituted in where.
+
+Currently, we write code like this,
+
+```C#
+var msg = string.Format("You ordered {0} {1}{{s}}", line.Quantity, line.Product.Name);
+```
+
+C# 6.0 makes this easier. You can ommit the `String.format` and put the variables right
+in the curly braces. Notice the slash at the start.
+
+```C#
+var msg = "You ordered \{line.Quantity} \{line.Product.Name}{s}";
+```
+
+Notice that pesky improper pluralization though. It was always a pain to
+deal with. Now, just put the code you need inline.
+
+```C#
+var msg = "You ordered \{line.Quantity} \{line.Product.Name}\{line.Quantity > 1 ? "s" : ""}";
+```
+
+The syntax currently uses a slash before the brace. In a later update, it will be
+switching to a dollar sign before the first quote and no slash, like this,
+
+
+```C#
+var msg = $"You ordered {line.Quantity} {line.Product.Name}{s}";
+```

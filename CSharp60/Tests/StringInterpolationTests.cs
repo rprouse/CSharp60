@@ -13,10 +13,10 @@ namespace CSharp60.Tests
         [Test]
         public void TestStringInterpolation()
         {
-            var line = new OrderLine(new Product("Toy boat", 12.99m), 1);
-            var msg = string.Format("You ordered {0} {1}{{s}}", line.Quantity, line.Product.Name);
+            var line = new OrderLine(new Product("Toy boat", 12.99m), 2);
+            var msg = "You ordered \{line.Quantity} \{line.Product.Name}\{line.Quantity > 1 ? "s" : ""}";
 
-            Assert.That(msg, Is.EqualTo("You ordered 1 Toy boat{s}") );
+            Assert.That(msg, Is.EqualTo("You ordered 2 Toy boats") );
         }
     }
 }
