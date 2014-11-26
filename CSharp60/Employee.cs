@@ -6,6 +6,7 @@ namespace CSharp60
     {
         public Employee(string name, string department, decimal salary) : base(name)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("name");
             Department = department;
             Salary = salary;
         }
